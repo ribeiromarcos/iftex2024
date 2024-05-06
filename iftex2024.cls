@@ -580,7 +580,16 @@
     \ifthenelse{\equal{\theCurso}{}}{}{%
       \par{\theCursoTipo} em {\theCurso}%
     }%
+    \ifthenelse{\equal{\theOrientador}{}}{}{%
+      \par%
+      {\theOrientadorRotulo}: {\theOrientador}\\%
+    }%
+    \ifthenelse{\equal{\theCoorientador}{}}{}{%
+      \par%
+      {\theCoorientadorRotulo}: {\theCoorientador}\\%
+    }%
     \ifthenelse{\equal{\theDisciplina}{}}{}{%
+      \vspace{1em}%
       \par Disciplina: {\theDisciplina}%
     }%
     \ifthenelse{\equal{\theProfessor}{}}{}{%
