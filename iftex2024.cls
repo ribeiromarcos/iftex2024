@@ -356,7 +356,7 @@
   \ifthenelse{\equal{\tipodoc}{artigo}}{%
     \ifthenelse{\equal{\pretextual}{TRUE}}{%
       \thePreambuloTCC%
-    }%
+    }{}%
   }{%
     \ifthenelse{\equal{\tipodoc}{dissertacao}}{%
       \thePreambuloDissetacao%
@@ -531,7 +531,6 @@
 \newcommand{\legend}[1]{%
   \begingroup%
     \vspace{3pt plus 1pt minus 1pt}%
-%     \vspace{1pt}%
     \par\footnotesize%
      Fonte: #1\par%
   \endgroup%
@@ -660,18 +659,10 @@
       \vspace*{3em}%
       \theAutor%
     }%
-%   \end{center}%
-%   \vfill%
-%   \noindent Disciplina: {\theDisciplina}\par%
-%   \noindent {\theProfessorRotulo}: {\theProfessor}\par%
   \vfill%
-%   \begin{center}%
-    {\textbf{\MakeUppercase{\theTitulo}}}%
+  {\textbf{\MakeUppercase{\theTitulo}}}%
   \end{center}%
   \vfill%
-%   \noindent Disciplina: {\theDisciplina}\par%
-%   \noindent {\theProfessorRotulo}: {\theProfessor}\par%
-%   \vfill%
   \begin{center}%
     {\theLocal}\par%
     {\theAno}%
