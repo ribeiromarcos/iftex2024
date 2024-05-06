@@ -1,0 +1,565 @@
+A classe {\iftex} utiliza os pacotes \textbf{biblatex} e \textbf{biblatex-abnt} para trabalhar conferências.
+Também foi construído o pacote \textbf{biblatexfix} com o objetivo de fazer algumas correções necessárias para que as referências atendessem corretamente as normas para trabalhos acadêmicos do IFMG \cite{ifmg:2020:manual}.
+
+Ao cadastrar uma referência é importante identificar seu tipo e preencher os campos corretamente.
+As seções que se seguem apresentam exemplos dos principais tipos de referências a serem incluídas em trabalhos acadêmicos.
+
+\subsection{Livro e/ou Folheto}
+
+Os elementos essenciais são: autor(es), título, subtítulo (se houver), edição, local, editora e data de publicação.
+Alguns exemplos:
+
+\vspace*{1em}
+
+\begin{minted}{bib}
+@book{chiavenato:2014,
+  author    = {Idalberto Chiavenato},
+  title     = {Administração},
+  subtitle  = {teoria, processo e prática},
+  edition   = {5},
+  address   = {Barueri},
+  publisher = {Manole},
+  year      = {2014},
+  note      = {\textit{E-book}.},
+}
+\end{minted}
+
+\noindent
+\fullcite{chiavenato:2014}.
+
+\vspace*{1em}
+
+\begin{minted}{bib}
+@book{fazio:2011,
+  author    = {Fazio, Michael W. and
+               Moffett, Marian and
+               Wodehouse, Lawrence},
+  title     = {A história da arquitetura mundial},
+  edition   = {3},
+  address   = {Porto Alegre},
+  publisher = {AMGH},
+  year      = {2011},
+}
+\end{minted}
+
+\noindent
+\fullcite{fazio:2011}.
+
+\subsection{Trabalho acadêmico}
+
+São considerados trabalhos acadêmicos: trabalho de conclusão de curso, dissertações, teses e outros trabalhos acadêmicos considerados no todo.
+Os itens essenciais são: autor(es), título, subtítulo (se houver), ano de depósito, tipo do trabalho (tese, dissertação, trabalho de conclusão de curso e outros), grau (graduação, especialização, mestrado ou doutorado) seguido do curso entre parênteses, vinculação acadêmica e data de apresentação ou defesa.
+Alguns exemplos:
+
+\vspace*{1em}
+
+\begin{minted}{bib}
+@thesis{oliveira:2016:app_fruta,
+  title       = {Desenvolvimento de um aplicativo em plataforma {Android}
+                 para auxílio no ensino de {Fruticultura}},
+  author      = {Oliveira, Bruno Alberto Soares and
+                 Silva, Gabriel da},
+  type        = {Relatório Final de Projeto de Iniciação Científica
+                 (Graduação em Engenharia de Computação)},
+  institution = {Instituto Federal de Educação, Ciência e Tecnologia de
+                 Minas Gerais (IFMG)},
+  location    = {Bambuí},
+  eventyear   = {2016},
+  year        = {2016},
+}
+\end{minted}
+
+\noindent
+\fullcite{oliveira:2016:app_fruta}.
+
+\vspace*{1em}
+
+\begin{minted}{bib}
+@thesis{vieira:2020:cpresql,
+  title       = {Novo modelo de hierarquia de preferências em consultas
+                 com preferências condicionais},
+  author      = {Vieira, Lucas Mariano},
+  type        = {Trabalho de Conclusão de Curso (Graduação em Engenharia
+                 de Computação)},
+  institution = {Instituto Federal de Educação, Ciência e Tecnologia de
+                 Minas Gerais (IFMG)},
+  location    = {Bambuí},
+  eventyear   = {2020},
+  year        = {2020},
+}
+\end{minted}
+
+\noindent
+\fullcite{vieira:2020:cpresql}.
+
+\vspace*{1em}
+
+\begin{minted}{bib}
+@thesis{nascimento:2001,
+  author      = {Suzy Regina Nascimento},
+  title       = {Oscilações no desempenho de motoristas profissionais,
+                 motoristas pluriacidentados e não-motoristas em tarefas
+                 de atenção mantida},
+  type        = {Dissertação (Mestrado em Psicologia)},
+  institution = {Instituto de Psicologia, Universidade de São Paulo
+                 (USP)},
+  location    = {São Paulo},
+  eventyear   = {2001},
+  year        = {2001},
+}
+\end{minted}
+
+\noindent
+\fullcite{nascimento:2001}.
+
+\vspace*{1em}
+
+\begin{minted}{bib}
+@thesis{ribeiro:2018,
+  author      = {Marcos Roberto Ribeiro},
+  title       = {{StreamPref}},
+  subtitle    = {Uma linguagem de consulta para dados em fluxo com
+                 suporte a preferências},
+  type        = {Tese (Doutorado em Ciência da Computação)},
+  institution = {Faculdade de Computação, Universidade Federal de
+                 Uberlândia (UFU)},
+  location    = {Uberlândia},
+  eventyear   = {2018},
+  year        = {2018},
+}
+\end{minted}
+
+\noindent
+\fullcite{ribeiro:2018}.
+
+\subsection{Parte de trabalho}
+
+Inclui capítulo, volume, fragmento e outras partes de uma obra, com autor(es) e/ou título próprios.
+Os elementos essenciais são: autor(es), título da parte, seguidos da expressão ``In:'', e da referência completa da monografia no todo. No final da referência, deve-se informar a descrição física da parte.
+Exemplo:
+
+\vspace*{1em}
+
+\begin{minted}{bib}
+@incollection{martins:2015,
+  author     = {José Rodolfo S. Martins},
+  title      = {Obras de macrodrenagem},
+  pages      = {167--240},
+  booktitle  = {Drenagem urbana},
+  editor     = {TUCCI, Carlos E. M. Tucci and
+                Rubem La Laina P. Porto and
+                Mário T. Barros},
+  editortype = {org.},
+  publisher  = {ABRH},
+  location   = {Porto Alegre},
+  year       = {2015},
+}
+\end{minted}
+
+\noindent
+\fullcite{martins:2015}.
+
+\subsection{Periódicos}
+
+Nas referências a periódicos como todo, os elementos essenciais são: título, subtítulo (se houver), local de publicação, editora, datas de início e de encerramento da publicação (se houver), e ISSN (se houver).
+Exemplo:
+
+\vspace*{1em}
+
+\begin{minted}{bib}
+@article{techne:1993,
+  title     = {TÉCHNE},
+  subtitle  = {revista de tecnologia da construção},
+  year      = {1993-},
+  location  = {São Paulo},
+  publisher = {Pini},
+  issn      = {0104-1053},
+}
+\end{minted}
+
+\noindent
+\fullcite{techne:1993}.
+
+\vspace*{1em}
+
+Para os artigos de periódico, os elementos essenciais são: autor (es), título do artigo ou da matéria, subtítulo (se houver), título do periódico, subtítulo (se houver), local de publicação, numeração do volume e/ou ano, número e/ou edição, tomo (se houver), páginas inicial e final, e data ou período de publicação.
+Exemplo:
+
+\vspace*{1em}
+
+\begin{minted}{bib}
+@article{lelis:2004,
+  author    = {Lelis, V. G. and
+               Costa, E. D. and
+               Ramos, L. P. and
+               Alvarenga, L. M. and
+               Minim, V. P. R. M.},
+  title      = {Aceitabilidade sensorial de doce de leite de diferentes
+                sabores},
+  journal    = {Revista do Instituto de Laticínios Cândido Tostes},
+  volume     = {59},
+  number     = {339},
+  pages      = {324-327},
+  month      = {jan},
+  year       = {2004},
+  location   = {Juiz de Fora},
+}
+\end{minted}
+
+\noindent
+\fullcite{lelis:2004}.
+
+\vspace*{1em}
+
+No caso de artigo ou matéria de jornal, os elementos essenciais são: autor(es), título do artigo, subtítulo (se houver), título do jornal, subtítulo de jornal (se houver), local de publicação, numeração do ano e/ou volume, número, data de publicação, seção, caderno ou parte do jornal e a paginação correspondente.
+Exemplo:
+
+\vspace*{1em}
+
+\begin{minted}{bib}
+@article{naves:1999,
+  author       = {P. Naves},
+  title        = {Lagos andinos dão banho de beleza},
+  journaltitle = {Folha de S. Paulo},
+  location     = {São Paulo},
+  date         = {1999-06-28},
+  note         = {Folha Turismo, Caderno 8, p. 13},
+}
+\end{minted}
+
+\noindent
+\fullcite{naves:1999}.
+
+\subsection{Evento}
+
+Um evento é o resultado de trabalhos publicados em congressos, seminários, simpósios, encontros, semanas, etc.
+
+Nas referências a um evento como todo, os elementos essenciais são: nome do evento, numeração (se houver), ano e local (cidade) de realização, título do documento, seguidos dos dados de local, editora e data da publicação.
+Exemplo:
+
+\vspace*{1em}
+
+
+\begin{minted}{bib}
+@proceedings{labid,
+  eventtitle = {Congresso Latino-Americano de Biblioteconomia e
+                Documentação},
+  number     = {1},
+  venue      = {Salvador},
+  eventyear  = {1980},
+  title      = {Anais [...]},
+  publisher  = {FEBAB},
+  address    = {Salvador},
+  year       = {1980},
+  pagetotal  = {350},
+}
+\end{minted}
+
+\noindent
+\fullcite{labid}.
+
+\vspace*{1em}
+
+Para trabalhos publicados em eventos, Os elementos essenciais são: autor, título do trabalho, seguidos da expressão In: nome do evento, numeração do evento (se houver), ano e local (cidade) de realização, título do documento, local, editora e data da publicação e páginas inicial e final da parte referenciada.
+Exemplo:
+
+\vspace*{1em}
+
+\begin{minted}{bib}
+@inproceedings{brayner:1994,
+  author     = {Brayner, A. R. A. and
+                Medeiros, C. B.},
+  title      = {Incorporação do tempo em SGBD orientado a objetos},
+  eventtitle = {Simpósio Brasileiro de Banco de Dados (SBBD)},
+  number     = {IX},
+  venue      = {São Paulo},
+  eventyear  = {1994},
+  booktitle  = {Anais [...]},
+  publisher  = {USP},
+  address    = {São Paulo},
+  year       = {1994},
+  pages      = {16--29},
+}
+\end{minted}
+
+\noindent
+\fullcite{brayner:1994}.
+
+\subsection{Patente}
+
+Os elementos essenciais de patentes são: inventor (autor), título, nomes do depositante ou titular e do procurador (se houver), número da patente, data de depósito e data de concessão da patente (se houver).
+Exemplo:
+
+\vspace*{1em}
+
+\begin{minted}{bib}
+@patent{bertazzoli:2006,
+  author     = {Bertazzoli, Rodnei and
+                Silva, João and
+                Mendes, José and
+                Carvalho, Maria},
+  title      = {Eletrodos de difusão gasosa modifi cados com
+                catalisadores redox, processo e reator eletroquímico de
+                síntese de peróxido de hidrogênio utilizando os mesmos},
+  titleaddon = {Depositante: Universidade Estadual de Campinas.
+                Procurador: Maria Cristina Valim Lourenço Gomes},
+  number     = {BR n. PI0600460-1A},
+  note       = {Depósito: 27 jan. 2006. Concessão: 25 mar. 2008},
+}
+\end{minted}
+
+\noindent
+\fullcite{bertazzoli:2006}.
+
+\subsection{Legislação}
+
+Referências a legislações incluem Constituição, Decreto, Decreto-Lei, Emenda Constitucional, Emenda à Lei Orgânica, Lei Complementar, Lei Delegada, Lei Ordinária e Medida Provisória, entre outros.
+Os elementos essenciais são: jurisdição, ou cabeçalho da entidade, em letras maiúsculas; epígrafe e ementa transcrita conforme publicada; dados da publicação.
+
+Quando necessário, acrescentam-se à referência os elementos complementares para melhor identificar o documento, como: retificações, alterações, revogações, projetos de origem,
+autoria do projeto, dados referentes ao controle de constitucionalidade, vigência, eficácia, consolidação ou atualização.
+Em epígrafes e ementas demasiadamente longas, pode-se suprimir parte do texto, desde que não seja alterado o sentido. A supressão deve ser indicada por reticências, entre colchete.
+Alguns exemplos:
+
+\vspace*{1em}
+
+\begin{minted}{bib}
+@legislation{brasil2002,
+  author     = {{Brasil}},
+  nameaddon  = {[Constituição (1988)]},
+  title      = {Constituição da República Federativa do Brasil},
+  titleaddon = {Organizado por Cláudio Brandão de Oliveira},
+  location   = {Rio de Janeiro},
+  publisher  = {Roma Victor},
+  year       = {2002},
+}
+\end{minted}
+
+\noindent
+\fullcite{brasil2002}.
+
+\vspace*{1em}
+
+\begin{minted}{bib}
+@legislation{curitiba2007,
+  author     = {{Curitiba}},
+  title      = {Lei n. 12.092, de 21 de dezembro de 2006},
+  titleaddon = {Estima a receita e fixa a despesa do município de
+                curitiba para o exercício financeiro de 2007},
+  location   = {Curitiba},
+  publisher  = {Câmara Municipal},
+  year       = {[2007]},
+  url        = {http://dominio.cmc.pr.gov.br/contlei.nsf/l12092-2006},
+  urldate    = {2007-03-22},
+}
+\end{minted}
+
+\noindent
+\fullcite{curitiba2007}.
+
+\subsection{Documento cartográfico}
+
+Documentos cartográficos incluem atlas, mapa, globo, fotografia aérea, entre outros.
+Elementos essenciais: autor(es), título, subtítulo (se houver), local, editora, data de publicação, descrição física e escala (se houver). Quando necessário, acrescentam-se elementos complementares à referência para melhor identificar o documento.
+Exemplo:
+
+\vspace*{1em}
+
+\begin{minted}{bib}
+@image{brasil1979,
+  author    = {{Brasil}},
+  nameaddon = {Ministério da Marinha},
+  title     = {Brasil - costa leste},
+  subtitle  = {do Rio Itatiti a Ilhéus},
+  edition   = {3},
+  location  = {Rio de Janeiro},
+  year      = {1979},
+  note      = {Carta náutica, N. 1.100. Escala natural 1: 308.541 na lat.
+               13° 23,50'.},
+}
+\end{minted}
+
+\noindent
+\fullcite{brasil1979}.
+
+\subsection{Meio eletrônico}
+
+Para informações de acesso exclusivo por meio eletrônico, os elementos essenciais: autor(es), título da informação ou serviço ou produto, versão ou edição (se houver), local, data e descrição física do meio eletrônico. Informações sobre o endereço eletrônico, precedido da expressão ``Disponível em:'' e a data de acesso ao documento, precedida da expressão ``Acesso em:''.
+
+Os demais tipos referências em meio eletrônico devem obedecer aos padrões já especificados, acrescidas das informações relativas à descrição física do meio eletrônico e a data de acesso.
+
+
+Alguns exemplos de referências em meios eletrônicos:
+
+\vspace*{1em}
+
+\begin{minted}{bib}
+@online{nourau,
+  title      = {NOU-Rau},
+  titleaddon = {software livre},
+  version    = {Beta 2},
+  location   = {Campinas},
+  publisher  = {UNICAMP},
+  year       = {2002},
+  url        = {www.rau-tu.unicamp.br/nou-rau},
+  urldate    = {2002-04-23},
+}
+\end{minted}
+
+\noindent
+\fullcite{nourau}.
+
+\vspace*{1em}
+
+\begin{minted}{bib}
+@book{galt:2017,
+  author    = {Christopher Galt},
+  title     = {O terceiro testamento},
+  address   = {São Paulo},
+  publisher = {Jangada},
+  year      = {2017},
+  url       = {http://le-livros.com/wp-content/uploads/2018/10/O
+               -Terceiro-Testamento-Christopher-Galt.pdf},
+ urldate    = {2018-11-29},
+}
+\end{minted}
+
+\noindent
+\fullcite{galt:2017}.
+
+\vspace*{1em}
+
+\begin{minted}{bib}
+@thesis{freitas:2006,
+  author      = {Freitas, Daniel Medeiros de},
+  title       = {Aproximações entre arquitetura e urbanismo nas
+                 intervenções realizadas no hipercentro de Belo
+                 Horizonte},
+  type        = {Dissertação (Mestrado em Arquitetura)},
+  institution = {Escola de Arquitetura, Universidade Federal de Minas
+                 Gerais (UFMG)},
+  location    = {Belo Horizonte},
+  eventyear   = {2006},
+  year        = {2006},
+  url         = {http://hdl.handle.net/1843/RAAO-6VZG2H},
+  urldate     = {2018-07-07},
+}
+\end{minted}
+
+\noindent
+\fullcite{freitas:2006}.
+
+\vspace*{1em}
+
+\begin{minted}{bib}
+@incollection{carvalho:2009,
+  author       = {Carvalho, R. F. de and
+                  Marar, J. F},
+  title        = {Arquitetura de informação},
+  pages        = {169--178},
+  booktitle    = {Design e planejamento:},
+  booksubtitle = {aspectos tecnológicos},
+  editor       = {Menezes, Marizilda dos S. and
+                  Paschoarelli, Luiz C.},
+  editortype   = {org.},
+  publisher    = {UNESP},
+  location     = {São Paulo},
+  year         = {2009},
+  url          = {http://books.scielo.org/id/mw22b},
+  urldate      = {2018-07-06},
+}
+\end{minted}
+
+\noindent
+\fullcite{carvalho:2009}.
+
+\vspace*{1em}
+
+\begin{minted}{bib}
+@article{tragante:2018,
+  author     = {Tragante, Cinthia Aparecida},
+  title      = {A habitação na literatura: as casas nos romances de
+                Machado de Assis e de Lima Barreto},
+  journaltitle    = {Risco},
+  journalsubtitle = {Revista de Pesquisa em Arquitetura e Urbanismo},
+  volume     = {16},
+  number     = {1},
+  pages      = {10--21},
+  year       = {2018},
+  location   = {São Paulo},
+  url        = {https://www.revistas.usp.br/risco/article/view/125235},
+  urldate = {2018-07-06}
+}
+\end{minted}
+
+\noindent
+\fullcite{tragante:2018}.
+
+\vspace*{1em}
+
+\begin{minted}{bib}
+@article{fernandes:2018,
+  author       = {Fernandes, A. and
+                  Cunha, J. P.},
+  title        = {Embraer não resistiria sozinha, diz especialista},
+  journaltitle = {Folha de S. Paulo},
+  date         = {2018-07-06},
+  note         = {Mercado},
+  location     = {São Paulo},
+  url          = {https://www1.folha.uol.com.br/mercado/2018/07/embraer-
+                  nao-resistiria-sozinha-diz-es-pecialista.shtml},
+  urldate      = {2018-07-06}
+}
+\end{minted}
+
+\noindent
+\fullcite{fernandes:2018}.
+
+\vspace*{1em}
+
+\begin{minted}{bib}
+@proceedings{icufpe,
+  eventtitle = {Congresso de Iniciação Científica da UFPE},
+  number     = {4},
+  venue      = {Recife},
+  eventyear  = {1996},
+  title      = {Anais eletrônicos [...]},
+  publisher  = {UFPE},
+  address    = {Recife},
+  year       = {1996},
+  url        = {http://www.propesq.ufpe.br/anais/anais.htm},
+  urldate    = {1997-01-21},
+}
+\end{minted}
+
+\noindent
+\fullcite{icufpe}.
+
+\vspace*{1em}
+
+\begin{minted}{bib}
+@inproceedings{ribeiro:2017:tpref,
+  author     = {Ribeiro, Marcos Roberto and
+                Barioni, Maria Camila N. and
+                de Amo, Sandra and
+                Roncancio, Claudia and
+                Labbé, Cyril},
+  title      = {Reasoning with temporal preferences over data streams},
+  eventtitle = {International Florida Artificial Intelligence Research
+                Society Conference (FLAIRS)},
+  number     = {XXX},
+  venue      = {Marco Island},
+  eventyear  = {2017},
+  booktitle  = {Proceedings [...]},
+  publisher  = {AAAI Publications},
+  address    = {Palo Alto},
+  year       = {2017},
+  pages      = {700--705},
+  url        = {https://www.aaai.org/ocs/index.php/FLAIRS/FLAIRS17/paper/
+                view/15398},
+  urldate    = {2023-04-12},
+}
+\end{minted}
+
+\noindent
+\fullcite{ribeiro:2017:tpref}.

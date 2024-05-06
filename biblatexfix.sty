@@ -1,0 +1,249 @@
+% Correções para o biblatex com ABNT
+\ProvidesPackage{biblatexfix}%
+
+% ==================================================
+% Pacotes necessários
+% ==================================================
+\RequirePackage[style=abnt,repeatfields,giveninits, uniquename=init,noslsn,alldates=short,backend=biber]{biblatex}%
+% URLs
+\RequirePackage{xurl}%
+
+% Redefinição do título de referências
+\defbibheading{bibliography}[REFERÊNCIAS]{\vspace*{-12pt}}%
+
+\AtBeginBibliography{%
+  \singlespacing%
+  \setlength{\parskip}{6pt}%
+}%
+
+% Citações explícitas
+\newcommand{\citet}{\textcite}%
+
+% URLs na mesma fonte do texto e quebra correta
+\urlstyle{same}%
+\setcounter{biburlnumpenalty}{100}%
+\setcounter{biburlucpenalty}{100}%
+\setcounter{biburllcpenalty}{100}%
+
+% Remoção de < e > nas URLs
+\DeclareFieldFormat{url}{\bibstring{urlfrom}\addcolon\addspace\url{#1}}%
+
+% --------------------------------------------------
+
+% Citações de fontes de figuras, tabelas, etc.
+\DeclareCiteCommand{\citefonte}[]%
+{\usebibmacro{cite:init}%
+ \usebibmacro{prenote}}%
+{\usebibmacro{citeindex}%
+ \usebibmacro{cite}}%
+{}%
+{\usebibmacro{postnote}}%
+
+% --------------------------------------------------
+
+\DeclareCiteCommand*{\citefonte}[]%
+{\usebibmacro{cite:init}%
+ \usebibmacro{prenote}}%
+{\usebibmacro{citeindex}%
+ \usebibmacro{citeyear}}%
+{}%
+{\usebibmacro{postnote}}%
+
+% --------------------------------------------------
+
+\DeclareMultiCiteCommand{\citefontes}[]%
+{\citefonte}{\setunit{\multicitedelim}}%
+
+% --------------------------------------------------
+
+% Coloca et al. em itálico
+\newcommand*{\mkandothers}{\itshape}%
+\renewbibmacro*{name:andothers}{%
+  \ifboolexpr{%
+    test {\ifnumequal{\value{listcount}}{\value{liststop}}}%
+    and%
+    test \ifmorenames%
+  }%
+  {\ifnumgreater{\value{liststop}}{1}%
+    {\finalandcomma}%
+    {}%
+    \andothersdelim\bibstring[\mkandothers]{andothers}}%
+  {}}%
+% --------------------------------------------------
+
+% Correção em trabalhos de eventos
+\DeclareBibliographyDriver{inproceedings}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{author/translator+others}%
+  \setunit{\labelnamepunct}%
+  \usebibmacro{title}%
+  \newunit%
+  \newblock%
+  \printlist{language}%
+  \newunit%
+  \newblock%
+  \usebibmacro{byauthor}%
+  \newunit%
+  \newblock%
+  \usebibmacro{in:eventtitle/organization/editor}%
+  \setunit*{\addspace}% \setunit*{\addcomma\addspace}%
+  \newblock%
+  \printfield{number}%
+  \setunit*{\adddot\addcomma\addspace}%
+  \newblock%
+  \printeventdate%
+  \setunit*{\addcomma\addspace}%
+  \printfield{venue}%
+  \newunit%
+  \newblock%
+  \usebibmacro{maintitle+booktitle}%
+  \newunit%
+  \newblock%
+  \usebibmacro{byeditor+others}%
+  \newunit%
+  \newblock%
+  \ifboolexpr{%
+    test {\iffieldundef{booktitle}}%
+    and%
+    test {\iffieldundef{maintitle}}%
+  }%
+	{}%
+	{\usebibmacro{publisher+location+date}}%
+  \newunit%
+  \newblock%
+  \iffieldundef{maintitle}%
+    {\printfield{volume}%
+     \printfield{part}}%
+    {}%
+  \newunit%
+  \newblock%
+  \printfield{volumes}%
+  \newunit%
+  \newblock%
+  \usebibmacro{series+number}%
+  \newunit%
+  \newblock%
+  \printlist{organization}%
+  \newunit%
+  \newblock%
+  \usebibmacro{chapter+pages}%
+  \newunit%
+  \printfield{pagetotal}%
+  \newunit%
+  \newblock%
+  \printfield{note}%
+  \newblock%
+  \printunit{\addperiod\addspace}%
+  \iftoggle{bbx:isbn}%
+    {\printfield{isbn}}%
+    {}%
+  \newunit%
+  \newblock%
+  \usebibmacro{doi+eprint+url}%
+  \newunit%
+  \newblock%
+  \usebibmacro{addendum+pubstate}%
+  \setunit*{\bibpagerefpunct}%
+  \newblock%
+  \usebibmacro{pageref}%
+  \setunit*{\addperiod\addspace}%
+  \newunit%
+  \newblock%
+  \iftoggle{bbx:related}%
+    {\usebibmacro{related:init}%
+     \usebibmacro{related}}%
+    {}%
+  \usebibmacro{finentry}%
+}%
+
+% Correção de eventos
+\DeclareBibliographyDriver{proceedings}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{organization/eventtitle}%
+  \setunit*{\addspace}% \setunit*{\addcomma\addspace}%
+  \printfield{number}%
+  \setunit*{\adddot\addcomma\addspace}%
+  \printeventdate%
+  \setunit{\addcomma\addspace}%
+  \usebibmacro{venue}%
+  \newunit%
+  \newblock%
+  \usebibmacro{maintitle+title}%
+  \newunit%
+  \newblock%
+  \usebibmacro{byeditor+others}%
+  \newunit%
+  \newblock%
+  \usebibmacro{publisher+location+date}%
+  \newunit%
+  \newblock%
+  \iffieldundef{maintitle}%
+    {\printfield{volume}%
+     \printfield{part}}%
+    {}%
+  \newunit%
+  \newblock%
+  \printfield{volumes}%
+  \newunit%
+  \newblock%
+  \printfield{note}%
+  \newblock%
+  \printunit{\addperiod\addspace}%
+  \printlist{organization}%
+  \newunit%
+  \newblock%
+  \usebibmacro{chapter+pages}%
+  \newunit%
+  \printfield{pagetotal}%
+  \newunit%
+  \newblock%
+  \iftoggle{bbx:isbn}%
+    {\printfield{isbn}}%
+    {}%
+  \newunit%
+  \newblock%
+  \usebibmacro{doi+eprint+url}%
+  \newunit%
+  \newblock%
+  \usebibmacro{addendum+pubstate}%
+  \setunit*{\bibpagerefpunct}%
+  \newblock%
+  \usebibmacro{pageref}%
+  \setunit*{\addperiod\addspace}%
+  \newunit%
+  \newblock%
+  \iftoggle{bbx:related}%
+    {\usebibmacro{related:init}%
+     \usebibmacro{related}}%
+    {}%
+  \usebibmacro{finentry}%
+}%
+
+% Destaque do título em legislação
+\DeclareFieldFormat[legislation]{title}{%
+  \iftoggle{ittitles}{%
+    \addspace\mkbibemph{#1}\isdot%
+  }{%
+    \addspace\mkbibbold{#1}\isdot%
+  }%
+}%
+
+% Correção em jornais
+\renewbibmacro*{journal}{%
+  \iffieldundef{journaltitle}%
+    {}%
+    {\printtext[journaltitle]{%
+       \printfield[titlecase]{journaltitle}%
+       \iffieldendswithpunct{journaltitle}{%
+          \setunit{\addspace}%
+       }{%
+          \setunit{\subtitlepunct}%
+       }%
+       \printfield[normalfont]{journalsubtitle}}}%
+}%
+
+% Correção da abreviação de páginas
+\DeclareFieldFormat*{pages}{p. #1}%
+

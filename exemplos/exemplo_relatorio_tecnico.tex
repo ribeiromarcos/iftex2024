@@ -1,0 +1,76 @@
+\documentclass{iftex2024}
+
+\addbibresource{referencias.bib}
+
+\titulo{Modelo de Relatório Técnico}
+\autor{Marcos Roberto Ribeiro}
+\local{Bambuí - MG}
+\data{2024-01-26}
+\campus{\textit{Campus} Bambuí}
+\curso{Bacharelado}{Engenharia de Computação}
+\titulacao{Bacharel}
+
+\orientador{Nome do Orientador}
+\membrobanca{Fulando de Tal}{Instituição do Fulano de Tal}
+\membrobanca{Ciclano de Tal}{Instituição do Ciclano de Tal}
+
+\fichacatalografica{ficha.pdf}
+\assinaturas{assinaturas.pdf}
+
+\resumo{Este trabalho é um modelo em {\latex} utilizando a classe \iftex.
+Tal classe foi desenvolvida com base no manual de normalização de trabalhos acadêmicos do IFMG e nas normas relacionadas da Associação Brasileira de Normas Técnicas.
+Este modelo apresenta uma estrutura básica com exemplos de elementos pré e pós-textuais.
+Maiores informações sobre como utilizar a classe podem ser encontradas no manual da classe \iftex.}
+\palavraschave{\iftex. Modelo. IFMG. \latex.}
+
+\abstract{This work is a template in {\LaTeX} using the \iftex class.
+This class was developed based on the academic work standardization manual of IFMG and the related norms of the Brazilian Association of Technical Standards.
+This template presents a basic structure with examples of pre and post-textual elements.
+Further information on how to use the class can be found in the \iftex class manual.}
+\keywords{\iftex. Template. IFMG. \latex.}
+
+\listasiglas{%
+ \begin{itemize}[]
+  \item[ABNT] -- Associação Brasileira de Normas Técnicas
+  \item[IFMG] -- Instituto Federal de Educação, Ciência e Tecnologia de Minas Gerais
+  \item[TCC] -- Trabalho de conclusão de curso
+ \end{itemize}
+}
+
+\begin{document}
+
+\maketitle
+
+\chapter{INTRODUÇÃO}
+
+A introdução desempenha um papel fundamental na preparação do leitor para o conteúdo que será abordado.
+Ela começa contextualizando o tema, fornecendo informações relevantes sobre o assunto, sua importância e seu contexto mais amplo na área de estudo.
+Além disso, a introdução deve fornecer justificativas convincentes para a realização da pesquisa, identificando lacunas no conhecimento existente, relevância prática ou teórica do tema e importância potencial dos resultados.
+
+Destaca-se que as contribuições esperadas do trabalho para a área de estudo, que podem incluir avanços teóricos e práticos, implicações políticas ou sociais, entre outros.
+Por fim, a introdução é geralmente concluída com um parágrafo que resume brevemente o objetivo geral do trabalho, reiterando os objetivos estabelecidos anteriormente.
+É essencial que essa seção seja redigida com clareza e coesão para capturar a atenção do leitor e estabelecer uma base sólida para o restante do trabalho.
+
+Por fim, é importante observar o regulamento e as normas de formatação e de elaboração de trabalhos de conclusão de curso do IFMG \cite{ifmg:2020:manual,ifmg:2021:tcc}.
+Além disso, é interessante consultar o manual da classe \iftex para conhecer mais sobre as configurações e exemplos de uso \cite{ribeiro:2024:iftex}.
+
+\chapter{DESENVOLVIMENTO}
+
+A seção de desenvolvimento apresenta e discute os resultados do trabalho.
+Inicialmente, os resultados são apresentados de forma objetiva, seguidos por uma discussão que os relaciona aos objetivos e à revisão de literatura.
+A interpretação dos resultados à luz das teorias é essencial, assim como a comparação com estudos anteriores.
+Finalmente, é importante reconhecer as limitações do estudo e sugerir direções futuras.
+Essa seção contribui para a compreensão do tema e o avanço do conhecimento na área.
+
+\chapter{CONCLUSÃO}
+
+A conclusão resume os principais pontos discutidos e apresenta as conclusões alcançadas a partir do trabalho.
+Ela destaca as descobertas mais significativas, sua relação com a literatura existente e suas implicações práticas ou teóricas.
+Além disso, a conclusão reafirma os objetivos do trabalho e sugere áreas para futuras investigações.
+É importante evitar a introdução de novas informações e manter a conclusão concisa e alinhada com os objetivos e resultados do estudo.
+
+\chapter*{REFERÊNCIAS}
+
+\printbibliography
+
+\end{document}

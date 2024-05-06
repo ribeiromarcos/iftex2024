@@ -1,0 +1,481 @@
+\documentclass[artigo]{iftex2024}
+
+\usepackage[cachedir=/tmp]{minted}
+\setminted{breaklines, frame=single, encoding=utf8,
+breaksymbolindentleft=0pt,
+breaksymbolsepleft=0pt,
+breaksymbolleft={}}
+
+\addbibresource{referencias.bib}
+\addbibresource[label=bib:exemplo]{exemplos_referencias.bib}
+
+\titulo{Documentação da classe \iftex}
+\autor{Marcos Roberto Ribeiro}
+\instituicao[IFMG]{Instituto Federal de Minas Gerais}
+\local{Bambuí - MG}
+\data{2024}
+\resumo{Documentação da classe {\iftex} para confecção de trabalhos acadêmicos seguindo as normas da Associação Brasileira de Normas Técnicas (ABNT), o manual de normalização de trabalhos acadêmicos do Instituto Federal de Minas Gerais (IFMG)}
+
+\newcommand{\ElaboradoAutor}{Elaborado pelo autor, 2024.}
+
+\begin{document}
+
+\maketitle
+\newpage
+\geraSumario
+
+\section{INTRODUÇÃO}
+
+Este documento descreve como utilizar a classe {\iftex} para confeccionar trabalhos acadêmicos seguindo as normas da Associação Brasileira de Normas Técnicas (ABNT), o manual de normalização de trabalhos acadêmicos do Instituto Federal de Minas Gerais (IFMG) \cite{ifmg:2020:manual} e o o regulamento geral de TCC dos cursos de Graduação do IFMG -- \textit{Campus} Bambuí \cite{ifmg:2021:tcc}.
+
+\section{ESTRUTURA DE DOCUMENTOS}
+
+O requisito básico para utilização da classe {\iftex} é criar um documento com o comando \comando{documentclass\{iftex2024\}}.
+Por padrão, a classe {\iftex}, cria um documento no formato de trabalho de conclusão de curso (TCC), podendo ser usado para confecção de monografias e relatórios técnicos.
+Para criar outros tipos de documentos, deve ser usado o comando \comando{documentclass[<TIPO>]\{iftex2024\}}, onde \textbf{<TIPO>} pode ser uma das seguintes opções:
+\begin{itemize}
+  \item[] \textbf{artigo} -- formato para artigos;
+  \item[] \textbf{atividade} -- formato para atividade avaliativa de disciplinas;
+  \item[] \textbf{dissertacao} e \textbf{tese} -- formatos para dissertações de mestrado e teses de doutorado, respectivamente;
+  \item[] \textbf{estagio} -- formato para relatórios de estágio;
+  \item[] \textbf{tcc} -- formato para trabalhos de conclusão de curso (monografia ou relatório técnico).
+\end{itemize}
+
+Somente o formato \textbf{artigo} não possui elementos pré-textuais como capa e folha de rosto.
+Nesse caso, se for necessário, a opção \textbf{capa} pode ser utilizado em conjunto com a opção \textbf{artigo} para gerar os elementos pré-textuais.
+
+Outra opção interessante é a escolha da fonte do documento.
+A fonte padrão utilizada é a \textbf{Arial}.
+Contudo, a opção \textbf{times} pode ser utilizada para que o documento fique com a fonte \textbf{Times New Roman}.
+
+Por fim, existe também a opção \textbf{recuosum} para especificar o recuo dos elementos do sumário (depois da numeração).
+A medida padrão usada é de 1.25cm.
+Porém, se o documento possuir muitos níveis de seções e numerações maiores, os números podem sobrepor o conteúdo dos elementos.
+Assim, nesses casos, pode ser usado um recuo maior através da opção \textbf{recuosum}.
+Por exemplo, para um recuo de 2cm, deve ser usada a opção \textbf{recuosum=2cm}.
+
+\begin{figure}[!htb] \centering
+\caption{Exemplo de documento na classe \iftex} \label{fig:documento_iftex}
+\begin{varwidth}{\linewidth}
+\begin{minted}{latex}
+\documentclass[dissertacao,times,recuosum=1.8cm]{iftex2024}
+\end{minted}
+\vspace{-1em}
+\legend{\ElaboradoAutor}
+\end{varwidth}
+\end{figure}
+
+Os documentos gerados pela classe {\iftex} podem ser divididos em elementos pré-textuais, textuais e pós-textuais.
+Os elementos pré-textuais são configurados no preâmbulo (código antes do comando \comando{begin\{document\}}).
+Os elementos textuais e pós-textuais, são inseridos entre os comandos \comando{begin\{document\}} e \comando{end\{document\}}.
+
+A classe {\iftex} possui diversos comandos de configuração pré-definidos para o preâmbulo.
+Alguns desses comandos são comuns para todos os tipos de documentos e alguns deles são específicos para cada tipo de documento.
+
+A Seção \ref{sec:conf_comuns} descreve as configurações comuns para todos os tipos de documentos.
+Em seguida, a Seção \ref{sec:conf_pretextuais} explica as configurações necessárias para a criação dos elementos pré-textuais.
+Depois, a Seção \ref{sec:pre_opcionais} lista as configurações para elementos pré-textuais opcionais.
+Por fim, a Seção \ref{sec:textuais_postextuais} fala dos elementos textuais e pós-textuais.
+
+\subsection{Configurações comuns} \label{sec:conf_comuns}
+
+As configurações comuns para todos os tipos de documentos são as seguintes:
+\begin{itemize}
+  \item[] \comando{addbibresource\{A\}} -- substituir \textbf{A} pelo nome do arquivo contendo as referências;
+
+  \item[] \comando{titulo\{T\}} -- substituir \textbf{T} pelo título;
+
+  \item[] \comando{autor\{A\}} -- substituir \textbf{A} pelo nome do autor;
+
+  \item[] \comando{data\{D\}} -- substituir \textbf{D} pela data no formato \textbf{AAAA-MM-DD};
+
+  \item[] \comando{instituicao[N]\{I\}} -- substituir \textbf{I} pelo nome da instituição, o valor padrão é o nome completo do IFMG, e, opcionalmente, substituir \textbf{S} pela sigla da instituição;
+
+  \item[] \comando{campus\{C\}} -- substituir \textbf{C} pelo nome do  \textit{campus};
+
+  \item[] \comando{curso\{T\}\{N\}} -- substituir \textbf{T} e \textbf{N} pelo tipo e nome do curso, respectivamente, sendo que o tipo do curso pode ser tecnologia, licenciatura, bacharelado, mestrado e assim por diante;
+\end{itemize}
+
+\subsection{Configurações para elementos pré-textuais de identificação} \label{sec:conf_pretextuais}
+
+Além das configurações comuns, certas configurações são necessárias para criação de elementos pré-textuais de identificação como capa, folha de rosto, ficha catalográfica, folha de aprovação, resumo e \textit{abstract}.
+Esse é o caso para documentos do tipo \textbf{dissertacao}, \textbf{estagio}, \textbf{tese}, \textbf{tcc} ou \textbf{artigo} com a opção \textbf{capa} ativada.
+Tais configurações são as seguintes:
+\begin{itemize}
+  \item[] \comando{titulacao\{T\}} -- substituir \textbf{T} pelo grau a ser obtido no curso como tecnólogo, licenciado, bacharel, mestre e assim por diante;
+
+  \item[] \comando{local\{L\}} -- substituir \textbf{L} pelo nome da cidade da instituição;
+
+  \item[] \comando{orientador[G]\{N\}} -- substituir \textbf{N} pelo nome do orientador e, opcionalmente, substituir \textbf{G} pelo gênero \textbf{F} (feminino) ou \textbf{M} masculino;
+
+  \item[] \comando{coorientador[G]\{N\}} -- substituir \textbf{N} pelo nome do coorientador e, opcionalmente, substituir \textbf{G} pelo gênero \textbf{F} (feminino) ou \textbf{M} masculino (não usar esse comando se o trabalho não tiver coorientador);
+
+  \item[] \comando{instituicaocoorientador\{I\}} -- substituir \textbf{I} pela instituição do coorientador (não usar esse comando se o trabalho não tiver coorientador);
+
+  \item[] \comando{ficha\{F\}} -- substituir \textbf{F} pelo nome do arquivo com ficha catalográfica, a ficha catalográfica não é gerada se o comando não for utilizado;
+
+  \item[] \comando{membrobanca\{N\}\{L\}} -- substituir \textbf{N} pelo nome do membro da banca e \textbf{L} pela instituição do membro, o comando deve ser repetido para cada membro da banca;
+
+  \item[] \comando{assinaturas\{A\}} -- substituir \textbf{A} pelo nome do arquivo com assinaturas digitais, a folha de aprovação fica sem as assinaturas se o comando não for utilizado;
+
+  \item[] \comando{resumo\{R\}} -- substituir \textbf{R} pelo texto do resumo;
+
+  \item[] \comando{palavraschave\{P\}} -- substituir \textbf{P} pelas palavras chaves com as iniciais em maiúsculas e separadas por ponto-final.
+\end{itemize}
+
+\subsection{Elementos pré-textuais opcionais} \label{sec:pre_opcionais}
+
+Para alguns tipos de documentos alguns elementos pré-textuais opcionais podem ser utilizados, são eles:
+\begin{itemize}
+  \item[] \comando{dedicatoria\{D\}} -- substituir \textbf{D} pelo texto da dedicatória;
+
+  \item[] \comando{agradecimentos\{A\}} -- substituir \textbf{A} pelo texto dos agradecimentos;
+
+  \item[] \comando{epigrafe\{E\}} -- substituir \textbf{E} pelo texto da epígrafe;
+
+  \item[] \comando{listafiguras} -- inclui a lista de figuras;
+
+  \item[] \comando{listatabelas} -- inclui a lista de tabelas;
+
+  \item[] \comando{listaquadros} -- inclui a lista de quadros;
+
+  \item[] \comando{listasiglas\{LS\}} -- substituir \textbf{LS} pela lista de siglas;
+
+  \item[] \comando{listasimbolos\{LS\}} -- substituir \textbf{LS} pela lista de símbolos;
+
+  \item[] \comando{preambulo\{P\}} -- substituir \textbf{P} pelo texto de preâmbulo personalizado a ser utilizando na folha de rosto e folha de aprovação, a classe {\iftex} gerá o preâmbulo padrão para esses documentos. Esse comando deve ser utilizado apenas se o texto padrão não for o desejado.
+\end{itemize}
+
+\subsection{Elementos textuais e pós-textuais} \label{sec:textuais_postextuais}
+
+Para todos os tipos de documentos, imediatamente após o comando \comando{begin\{document\}}, deve ser inserido o comando \comando{maketitle}.
+Esse comando é responsável por gerar os elementos pré-textuais.
+
+Depois do comando \comando{maketitle} começam as estruturas textuais dos documentos.
+Para artigos, as divisões principais são feitas com o comando \comando{section\{\}}.
+Para os demais documentos, o comando \comando{chapter\{\}} deve ser usado para as divisões principais.
+
+Depois dos elementos textuais, vêm os elementos pós-textuais, obedecendo à seguinte ordem:
+\begin{enumerate}
+ \item Referências (obrigatório, exceto para relatórios de estágio);
+ \item Glossário (opcional);
+ \item Apêndices (opcional);
+ \item Anexos (opcional);
+ \item Índice (opcional);
+ \item Agradecimento (opcional, apenas para artigos);
+\end{enumerate}
+
+Para a construção das referências, deve ser inserido o comando \comando{section*\{REFERÊNCIAS\}} (para artigos) ou \comando{chapter*\{REFERÊNCIAS\}} (para os demais documentos).
+Em seguida, deve ser utilizado o comando \comando{printbibliography} para gerar a lista de referências citadas no texto.
+
+Para a inclusão do glossário, é necessário incluir o comando \comando{section*\{GLOSSÁRIO\}} (para artigos) ou \comando{chapter*\{GLOSSÁRIO\}} (para os demais documentos).
+As entradas do glossário deve estar em ordem alfabética e podem ser inseridas com qualquer ambiente de lista.
+A Figura \ref{fig:exemplo_glossario} exibe um exemplo de glossário.
+
+\begin{figure}[!htb] \centering
+\caption{Exemplo de glossário} \label{fig:exemplo_glossario}
+\begin{varwidth}{\linewidth}
+\inputminted{latex}{figuras/exemplo_glossario.tex}
+\vspace{-1em}
+\legend{\ElaboradoAutor}
+\end{varwidth}
+\end{figure}
+
+A inserção dos apêndices deve iniciar com o comando \comando{appendix}.
+Depois desse comando, cada apêndice deve ser inserido usando a mesma divisão principal do documento (\comando{section\{\}} para artigos e \comando{chapter\{\}} para os demais.
+Os anexos, de forma similar, começam com o comando \comando{attachment}.
+Em seguida, cada anexo deve ser inserido usando a mesma divisão principal do documento.
+
+A classe {\iftex} utiliza o pacote \textbf{imakeidx} para confecção do índice.
+Nesse caso, as entradas a serem incluídas no índice devem ser inseridas durante a escrita dos elementos textuais por meio do comando \comando{index\{P!C\}}, onde \textbf{P} é a palavra e \textbf{C} é o contexto.
+A geração do índice deve ser feita começando a inclusão do \comando{section*\{ÍNDICE\}} (para artigos) ou \comando{chapter*\{ÍNDICE\}} (para os demais documentos).
+Em seguida, deve ser usado o comando \comando{printindex} para gerar a lista de entradas do índice.
+A Figura \ref{fig:exemplo_indice} apresenta trechos de código para inclusão de entradas e geração de um índice.
+
+\begin{figure}[!htb] \centering
+\caption{Exemplo de índice} \label{fig:exemplo_indice}
+\begin{varwidth}{\linewidth}
+\inputminted{latex}{figuras/exemplo_indice.tex}
+\vspace{-1em}
+\legend{\ElaboradoAutor}
+\end{varwidth}
+\end{figure}
+
+\section{TIPOS DE DOCUMENTOS}
+
+\subsection{Artigos}
+
+As configurações específicas para documentos do tipo \textbf{artigo} são as seguintes:
+\begin{itemize}
+  \item[] \comando{email\{E\}} -- substituir \textbf{E} pelo e-mail do autor;
+
+  \item[] \comando{submissao\{D\}} -- substituir \textbf{D} pela data no formato \textbf{AAAA-MM-DD};
+\end{itemize}
+
+Além das configurações específicas, também podem ser usadas as seguintes configurações opcionais:
+\begin{itemize}
+  \item[] \comando{tituloestrangeiro\{T\}} -- substituir \textbf{T} pelo título em outro idioma;
+
+  \item[] \comando{abstract\{A\}} -- substituir \textbf{A} pelo texto do \textit{abstract};
+
+  \item[] \comando{keywords\{K\}} -- substituir \textbf{K} pelas palavras chaves em inglês com as iniciais em maiúsculas e separadas por ponto-final.
+\end{itemize}
+
+No caso do artigo ser uma atividade de uma disciplina, também podem ser inseridas as configurações adequadas para esse fim.
+São elas:
+\begin{itemize}
+  \item[] \comando{disciplina\{D\}} -- substituir \textbf{D} pelo nome da disciplina;
+  \item[] \comando{professor\{P\}} -- substituir \textbf{P} pelo nome do professor da disciplina;
+\end{itemize}
+
+O Apêndice \ref{ap:exemplo_artigo} apresenta um exemplo de código contendo a estrutura básica de um artigo.
+Já o Apêndice \ref{ap:exemplo_artigo_capa} mostra um exemplo de código de artigo com capa e elementos pré-textuais.
+
+\subsection{Atividade}
+
+As configurações específicas para documentos do tipo \textbf{atividade} são as seguintes:
+\begin{itemize}
+  \item[] \comando{disciplina\{D\}} -- substituir \textbf{D} pelo nome da disciplina;
+
+  \item[] \comando{professor\{P\}} -- substituir \textbf{P} pelo nome do professor da disciplina;
+\end{itemize}
+
+O Apêndice \ref{ap:exemplo_atividade} apresenta um exemplo de código contendo a estrutura básica de uma atividade.
+
+\subsection{Dissertações e Teses}
+
+As configurações específicas para documentos do tipo \textbf{dissertacao} ou \textbf{tese} são as seguintes:
+\begin{itemize}
+  \item[] \comando{linhapesquisa\{L\}]} -- substituir \textbf{L} pela linha de pesquisa;
+
+  \item[] \comando{areaconcentracao\{A\}]} -- substituir \textbf{A} pela área de concentração;
+\end{itemize}
+
+O Apêndice \ref{ap:exemplo_dissertacao} apresenta um exemplo de código contendo a estrutura básica de uma dissertação de mestrado.
+
+\subsection{Estágio}
+
+As configurações específicas para documentos do tipo \textbf{estagio} são as seguintes:
+\begin{itemize}
+  \item[] \comando{empresa\{E\}]} -- substituir \textbf{E} pelo nome da empresa onde o estágio foi realizado;
+
+  \item[] \comando{horas\{H\}]} -- substituir \textbf{H} pelo número de horas de estágio realizadas;
+
+  \item[] \comando{membrobanca\{N\}\{L\}} -- substituir \textbf{N} pelo nome do membro da banca e \textbf{L} pela instituição do membro, o comando deve ser repetido para cada membro da banca;
+\end{itemize}
+
+O Apêndice \ref{ap:exemplo_estagio} apresenta um exemplo de código contendo a estrutura básica de um relatório de estágio.
+
+\subsection{Trabalhos de conclusão de curso} \label{sec:conf_tcc}
+
+Os documentos do tipo \textbf{tcc} não possuem configurações específicas além das configurações comuns e de criação de elementos pré-textuais.
+A Apêndice \ref{ap:exemplo_monografia} apresenta um exemplo de código de TCC no formato de monografia.
+Já o Apêndice \ref{ap:exemplo_relatorio_tecnico} contém um exemplo de código de TCC no formato de relatório técnico.
+
+\section{ELABORAÇÃO DE DOCUMENTOS}
+
+\subsection{Figuras}
+
+A inserção de figuras é realizada através do comando \comando{begin\{figure\}}.
+A Figura \ref{figura:logomarca_if} exibe a logomarca do IF.
+É interessante usar o ambiente \textbf{varwidth} em todas as figuras para manter a fonte alinhada a esquerda.
+No caso de figuras de outros autores a citação na fonte deve ser feita com o comando \comando{citefonte\{\}}.
+
+\begin{figure}[!htb] \centering
+  \caption{Logomarca do IF} \label{figura:logomarca_if}
+  \begin{varwidth}{\linewidth}
+    \includegraphics[width=4cm]{figuras/if}
+    \legend{\citefonte{ifmg:2020:manual}.}
+  \end{varwidth}
+\end{figure}
+
+\subsection{Tabelas e quadros}
+
+A inserção de tabelas e quadros é feita utilizando os ambientes \textbf{table} e \textbf{board}.
+A principal diferença entre tabelas e quadros, de acordo com \citet{ifmg:2020:manual}, é que as tabelas são destinadas para informações numéricas e os quadros são mais adequados para informações textuais.
+Como exemplos foram inseridos a Tabela \ref{tab:lista_produtos} e o Quadro \ref{qua:editores_texto_livres} com alguns editores que podem ser usados para se trabalhar com \latex para demonstrar a inserção de quadros.
+
+\begin{table}[!htb]
+\caption{Lista de produtos} \label{tab:lista_produtos}
+\begin{tabularx}{\textwidth}{X|l|r|r|r} \hline
+Produto      & Unidade & Preço (R\$) & Quantidade & Total (R\$) \\ \hline
+Arroz        & Kg      & 2,00        & 550        & 1.100,00    \\
+Óleo de Soja & L       & 2,50        & 500        & 750,00      \\
+Açúcar       & Kg      & 3,00        & 100        & 300,00      \\ \hline
+\end{tabularx}
+\legend{\ElaboradoAutor}
+\end{table}
+
+\begin{board}[!htb] \centering
+\caption{Editores de Texto Livres} \label{qua:editores_texto_livres}
+\begin{varwidth}{\linewidth}
+\begin{tabular}{|l|l|r|}        \hline
+Editor     & Multiplataforma & Específico para Latex \\ \hline
+KWriter    & Sim             & Não                   \\
+Texmaker   & Sim             & Sim                   \\
+Kile       & Sim             & Sim                   \\
+Geany      & Sim             & Não                   \\ \hline
+\end{tabular}
+\legend{\ElaboradoAutor}
+\end{varwidth}
+\end{board}
+
+\subsection{Fórmulas matemáticas}
+
+As equações devem ser apresentadas de forma centralizada e enumeradas quando necessário (ou seja, apenas se houver citação das equações no texto).
+
+\begin{equation} \label{eq:vel_ondas}
+ v=\frac{1}{\sqrt{\epsilon_0\mu_0}}
+\end{equation}
+
+A Equação \eqref{eq:vel_ondas} representa a velocidade das ondas eletromagnéticas, e a Equação \eqref{eq:fubini} refere-se ao famoso Teorema de Fubini, considerando $R=\left\{(x,y)~|~a\leq x\leq b,~c\leq y\leq d\right\}$ com $a,b,c,d\in\mathbb{R}$.
+
+\begin{equation} \label{eq:fubini}
+ V=\int\int\limits_R f(x,y)~dA=\int_a^b\int_c^d f(x,y)~dy~dx=\int_c^d\int_a^b f(x,y)~dx~dy
+\end{equation}
+
+\subsection{Alíneas}
+
+As alíneas devem ser criadas obedecendo aos seguintes passos:
+\begin{enumerate}
+ \item preceder com o sinal de dois-pontos;
+ \item utilizar o ambiente \textbf{enumerate};
+ \item todos os itens devem começar com letra minúscula;
+ \item ao final de cada item utilizar ponto-e-vírgula, exceto no item final e items precedendo subalíneas;
+ \item as subalíneas devem ser feitas como se segue:
+ \begin{itemize}
+  \item o item anterior à subalínea deve terminar com dois-pontos;
+  \item utilizar o ambiente \textbf{itemize};
+  \item as subalíneas seguem as mesmas regras das alíneas;
+  \item o item final da subalínea finaliza com ponto-e-vírgula;
+ \end{itemize}
+ \item o item final das alíneas termina com ponto-final.
+\end{enumerate}
+
+A Figura \ref{fig:exemplo_alinea} mostra um exemplo de código para construção de alíneas e subalíneas.
+
+\begin{figure}[!htb] \centering
+\caption{Exemplo de alínea} \label{fig:exemplo_alinea}
+\begin{varwidth}{\linewidth}
+\inputminted{latex}{figuras/exemplo_alinea.tex}
+\vspace{-1em}
+\legend{\ElaboradoAutor}
+\end{varwidth}
+\end{figure}
+
+\subsection{Citações}
+
+Em documentos acadêmicos podem existir citações diretas e citações indiretas.
+As citações indiretas são feitas quando se reescreve uma referência consultada.
+Nas citações indiretas, há duas formatações possíveis dependendo de como ocorre a citação no texto.
+Quando o autor é mencionado explicitamente na sentença deve ser usado o comando \comando{citet\{\}}, nas demais situações é usado o comando \comando{cite\{\}}.
+A Figura \ref{figura:citacao_indireta_explicita} mostra um exemplo com o comando \comando{citet\{\}}.
+
+% --------------------------------------------------
+
+\begin{figure}[!htb]
+\caption{Exemplo de citação indireta explícita} \label{figura:citacao_indireta_explicita}
+\begin{minted}{latex}
+Segundo \citet{ifmg:2020:manual}, o trabalho de conclusão de curso deve seguir as normas da ABNT.
+\end{minted}
+\vspace{-1em}
+\legend{\ElaboradoAutor}
+\end{figure}
+
+Para especificar a página consultada na referência é preciso acrescentá-la entre colchetes com os comandos \comando{cite[página]\{\}} ou \comando{citet[página]\{\}}.
+A Figura \ref{figura:citacao_indireta_pagina} apresenta um exemplo de citação com página específica.
+
+
+\begin{figure}[!htb]
+\caption{Exemplo de citação indireta não explícita} \label{figura:citacao_indireta_pagina}
+\begin{minted}{latex}
+A folha de aprovação é um elemento obrigatório no trabalho de conclusão de curso \cite[p.~22]{ifmg:2020:manual}.
+\end{minted}
+\vspace{-1em}
+\legend{\ElaboradoAutor}
+\end{figure}
+
+As citações diretas acontecem quando o texto de uma referência é transcrito literalmente.
+As citações diretas curtas (até três linhas) são inseridas no texto entre aspas duplas.
+As aspas podem ser inseridas automaticamente com o comando \comando{enquote\{\}}, como no exemplo exibido na Figura \ref{figura:citacao_direta_curta}.
+
+% --------------------------------------------------
+
+\begin{figure}[!htb]
+\caption{Exemplo de citação direta curta} \label{figura:citacao_direta_curta}
+\begin{minted}{latex}
+\enquote{A tabela deve ser colocada em posição vertical, para facilitar a leitura dos dados} \cite[p.~26]{ifmg:2020:manual}.
+\end{minted}
+\vspace{-1em}
+\legend{\ElaboradoAutor}
+\end{figure}
+
+As citações longas (com mais de 3 linhas) podem ser inseridas com o ambiente \textbf{quote} como mostra a Figura \ref{figura:citacao_direta_longa}.
+
+\begin{figure}[!htb]
+\caption{Exemplo de citação direta longa} \label{figura:citacao_direta_longa}
+\begin{minted}{latex}
+\begin{quote}
+A tabela deve ser colocada em posição vertical, para facilitar a leitura dos dados.
+No caso em que isso seja impossível, deve ser colocada em posição horizontal, com o título voltado para a margem esquerda da folha.
+Fontes e notas devem aparecer na parte inferior da tabela em tamanho 11 \cite[p.~25]{ifmg:2020:manual}.
+\end{quote}
+\end{minted}
+\vspace{-1em}
+\legend{\ElaboradoAutor}
+\end{figure}
+
+\section{ELABORAÇÃO DE REFERÊNCIAS}
+
+\input{elaboracao_referencias}
+
+\section{CONCLUSÃO}
+
+Este manual apresentou a documentação da classe \iftex para confecção de trabalhos acadêmicos seguindo as normas da Associação Brasileira de Normas Técnicas (ABNT), o manual de normalização de trabalhos acadêmicos do Instituto Federal de Minas Gerais (IFMG).
+
+A utilização da classe requer um conhecimento básico da linguagem \latex.
+Existem diversos tutoriais gratuitos disponíveis que podem ser utilizados.
+Um exemplo é o material do mini-curso \enquote{Escrevendo TCC com \latex} \cite{ribeiro:2023:latex}.
+
+\section*{REFERÊNCIAS}
+
+\printbibliography[notkeyword=exemplo]
+
+\appendix
+
+\newpage
+\section{Exemplo de artigo} \label{ap:exemplo_artigo}
+
+\inputminted[linenos]{latex}{exemplos/exemplo_artigo.tex}
+
+\newpage
+\section{Exemplo de artigo com capa} \label{ap:exemplo_artigo_capa}
+
+\inputminted[linenos]{latex}{exemplos/exemplo_artigo_capa.tex}
+
+\newpage
+\section{Exemplo de atividade} \label{ap:exemplo_atividade}
+
+\inputminted[linenos]{latex}{exemplos/exemplo_atividade.tex}
+
+\newpage
+\section{Exemplo de dissertação} \label{ap:exemplo_dissertacao}
+
+\inputminted[linenos]{latex}{exemplos/exemplo_dissertacao.tex}
+
+\newpage
+\section{Exemplo de relatório de estágio} \label{ap:exemplo_estagio}
+
+\inputminted[linenos]{latex}{exemplos/exemplo_relatorio_estagio.tex}
+
+\newpage
+\section{Exemplo de monografia} \label{ap:exemplo_monografia}
+
+\inputminted[linenos]{latex}{exemplos/exemplo_monografia.tex}
+
+\newpage
+\section{Exemplo de relatório técnico} \label{ap:exemplo_relatorio_tecnico}
+
+\inputminted[linenos]{latex}{exemplos/exemplo_relatorio_tecnico.tex}
+
+\end{document}
