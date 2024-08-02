@@ -337,7 +337,7 @@
 % -------------------------------------------------------
 % Estágio
 \newcommand{\thePreambuloEstagio}{%
-  Relatório de estágio do Curso de {\theCursoTipo} em {\theCurso} do {\theInstituicaoCompleto} -- {\theCampus}, sob a orientação d{\theOrientadorArtigo} {\theOrientador}. O Estágio foi realizado na instituição {\theEmpresa} e teve a duração de {\theHoras} horas.%
+  Relatório de estágio apresentado ao Curso de {\theCursoTipo} em {\theCurso} do {\theInstituicaoCompleto} -- {\theCampus} para obtenção do grau de {\theCursoTitulo} em {\theCurso}.%
 }%
 % TCC
 \newcommand{\thePreambuloTCC}{%
@@ -492,7 +492,7 @@
 
 % Alíneas
 \newlength{\recuoalinea}%
-\setlength{\recuoalinea}{1cm}%
+\setlength{\recuoalinea}{2cm}%
 \setlist{nosep}%
 \setlist[enumerate]{labelindent=\recuoalinea, leftmargin=*, label=\alph*)}%
 \setlist[itemize]{labelindent=\recuoalinea, leftmargin=*, label=-}%
