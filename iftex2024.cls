@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}%
-\ProvidesClass{iftex2024}%
+\ProvidesClass{iftex2024}[2024 Classe IFTeX2024 para trabalhos academicos por Marcos Roberto Ribeiro]%
 
 % --------------------------------------------------
 % Pacotes essenciais para inicialização
@@ -902,7 +902,7 @@
     \par%
     {%
       \theAbstract%
-      \ifthenelse{\equal{\thePalavrasChave}{}}{}{%
+      \ifthenelse{\equal{\theKeywords}{}}{}{%
         \par%
         \vspace{0.25em}%
         \noindent\textbf{Keywords:} \theKeywords%
@@ -1161,8 +1161,10 @@
 % --------------------------------------------------
 % Configurações para o PDF
 % --------------------------------------------------
-\hypersetup{%
+\AtBeginDocument{%
+  \hypersetup{%
     pdftitle={\theTitulo},%
     pdfauthor={\theAutor},%
     pdfkeywords={\thePalavrasChave},%
+  }%
 }%
