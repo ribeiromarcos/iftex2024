@@ -4,7 +4,14 @@
 % ==================================================
 % Pacotes necessários
 % ==================================================
-\RequirePackage[style=abnt,repeatfields,giveninits, uniquename=init,noslsn,alldates=short,backend=biber]{biblatex}%
+\RequirePackage[style=abnt, % Estilo ABNT
+uniquename=false,  % Não desambiguar nomes
+extrayear,         % Diferencia anos iguais com letra
+repeatfields,      % Repetir entradas, não usar sublinhado
+giveninits,        % Usar iniciais na bibliografia
+noslsn,            % Omitir SL e SN
+alldates=short,    % Todas as datas abreviadas
+backend=biber]{biblatex}%
 % URLs
 \RequirePackage{xurl}%
 
@@ -13,7 +20,7 @@
 
 \AtBeginBibliography{%
   \singlespacing%
-  \setlength{\parskip}{6pt}%
+  \setlength{\parskip}{10pt}%
 }%
 
 % Citações explícitas

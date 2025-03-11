@@ -530,7 +530,7 @@
 % --------------------------------------------------
 \newcommand{\legend}[1]{%
   \begingroup%
-    \vspace{3pt plus 1pt minus 1pt}%
+    \parskip=3pt%
     \par\footnotesize%
      Fonte: #1\par%
   \endgroup%
