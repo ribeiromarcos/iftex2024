@@ -154,9 +154,18 @@
 \newcommand{\theAno}{}%
 \newcommand{\nomeMes}[1]{%
   \ifcase #1%
-  \or Janeiro \or Fevereiro \or Março \or Abril%
-  \or Maio \or Junho \or Julho \or Agosto%
-  \or Setembro \or Outubro \or Novembro \or Dezembro%
+	\or Janeiro%
+	\or Fevereiro%
+	\or Março%
+	\or Abril%
+	\or Maio%
+	\or Junho%
+	\or Julho%
+	\or Agosto%
+	\or Setembro%
+	\or Outubro%
+	\or Novembro%
+	\or Dezembro%
   \else {}%
   \fi%
 }%
