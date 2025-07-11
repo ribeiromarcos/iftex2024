@@ -404,12 +404,12 @@
     \titleformat{name=\section,numberless}{\normalfont\bfseries\filcenter}{}{0pt}{\addcontentsline{toc}{section}{#1}\MakeUppercase{#1}}%
     \titleformat{name=\subsection}{\normalfont\bfseries}{\thesubsection\space}{0pt}{#1}%
     \titleformat{name=\subsubsection}{\normalfont\bfseries\itshape}{\thesubsubsection\space}{0pt}{#1}%
-    \titleformat{name=\paragraph}{\normalfont}{\thesubsubsection\space}{0pt}{#1}%
+    \titleformat{name=\paragraph}{\normalfont}{\theparagraph\space}{0pt}{#1}%
 }{%
     \titleformat{name=\section}{\normalfont\bfseries}{\thesection\space}{0pt}{#1}%
     \titleformat{name=\subsection}{\normalfont\bfseries\itshape}{\thesubsection\space}{0pt}{#1}%
     \titleformat{name=\subsubsection}{\normalfont}{\thesubsubsection\space}{0pt}{#1}%
-    \titleformat{name=\paragraph}{\normalfont\itshape}{\thesubsubsection\space}{0pt}{#1}%
+    \titleformat{name=\paragraph}{\normalfont\itshape}{\theparagraph\space}{0pt}{#1}%
 }%
 
 % -------------------------------------------------------
