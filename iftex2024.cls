@@ -124,8 +124,6 @@
 % PDF com hyperlinks
 \RequirePackage[hypertexnames=false]{hyperref}%
 \RequirePackage{bookmark}%
-% Manipulação de strings
-\RequirePackage{xstring}%
 % Geração de índice
 \RequirePackage{imakeidx}%
 
@@ -149,9 +147,7 @@
 \newcommand{\theEmail}{}%
 \newcommand{\email}[1]{%
   \renewcommand{\theEmail}{#1}}%
-% Data (AAAA-MM-DD, AAAA-MM ou AAAA)
-\newcommand{\theData}{}%
-\newcommand{\theAno}{}%
+% Nome de mês por extenso
 \newcommand{\nomeMes}[1]{%
   \ifcase #1%
 	\or Janeiro%
@@ -166,58 +162,59 @@
 	\or Outubro%
 	\or Novembro%
 	\or Dezembro%
-  \else {}%
+  \else {MÊS INVÁLIDO}%
   \fi%
 }%
-\newcommand{\tempAno}{}%
-\newcommand{\tempNumMes}{}%
-\newcommand{\tempDia}{}%
-\newcommand{\tempMes}{}%
-\newcommand{\processaData}[1]{%
-  \StrBefore{#1}{-}[\tempAno]% AAAA
-  \StrBehind{#1}{-}[\tempNumMes]% MM-DD ou MM
-  \StrCount{\tempNumMes}{-}[\numHyfens]% Posição do hífen
-  \ifthenelse{\equal{\numHyfens}{1}}{% Testa se é MM-DD
-    \StrBehind{\tempNumMes}{-}[\tempDia]% DD
-    \StrBefore{\tempNumMes}{-}[\tempNumMes]% MM
-  }{}%
-  \IfInteger{\tempNumMes}{% Testa se MM é numérico
-    \renewcommand{\tempMes}{\nomeMes{\tempNumMes}}%
-  }{%
-    \renewcommand{\tempMes}{}%
-    \renewcommand{\tempDia}{}%
-  }%
-  \ifthenelse{\equal{\tempAno}{}}{%
-    \renewcommand{\tempAno}{#1}%
-  }{}%
+
+% Data [DD][MM]{AAAA}, [MM]{AAAA} ou {AAAA})
+\def\theData{}%
+\def\theAno{}%
+
+\def\data{%
+  \@ifnextchar[{\dataComPrimeiroOpcional}{\dataSomenteAno}%
 }%
-\newcommand{\data}[1]{%
-  \processaData{#1}%
-  \ifthenelse{\equal{\tempDia}{}}{%
-    \ifthenelse{\equal{\tempMes}{}}{%
-      \renewcommand{\theData}{\tempAno}%
-    }{%
-      \renewcommand{\theData}{{\tempMes} de {\tempAno}}%
-    }%
-  }{%
-    \renewcommand{\theData}{{\tempDia} de {\tempMes} de {\tempAno}}%
-  }%
-  \renewcommand{\theAno}{\tempAno}%
+
+\def\dataComPrimeiroOpcional[#1]{%
+  \@ifnextchar[{\dataDiaMes[#1]}{\dataMesAno[#1]}%
 }%
+
+\def\dataDiaMes[#1][#2]#3{%
+  \def\theData{#1 de \nomeMes{#2} de #3}%
+  \def\theAno{#3}%
+}%
+
+\def\dataMesAno[#1]#2{%
+  \def\theData{\nomeMes{#1} de #2}%
+  \def\theAno{#2}%
+}%
+
+\def\dataSomenteAno#1{%
+  \def\theData{#1}%
+  \def\theAno{#1}%
+}%
+
 % Data de submissão (para artigos)
-\newcommand{\theDataSub}{}%
-\newcommand{\submissao}[1]{%
-  \processaData{#1}%
-  \ifthenelse{\equal{\tempDia}{}}{%
-    \ifthenelse{\equal{\tempMes}{}}{%
-      \renewcommand{\theDataSub}{\tempAno}%
-    }{%
-      \renewcommand{\theDataSub}{{\tempMes} de {\tempAno}}%
-    }%
-  }{%
-    \renewcommand{\theDataSub}{{\tempDia} de {\tempMes} de {\tempAno}}%
-  }%
+\def\theDataSub{}%
+\def\submissao{%
+  \@ifnextchar[{\subComPrimeiroOpcional}{\subSomenteAno}%
 }%
+
+\def\subComPrimeiroOpcional[#1]{%
+  \@ifnextchar[{\subDiaMes[#1]}{\subMesAno[#1]}%
+}%
+
+\def\subDiaMes[#1][#2]#3{%
+  \def\theDataSub{#1 de \nomeMes{#2} de #3}%
+}%
+
+\def\subMesAno[#1]#2{%
+  \def\theDataSub{\nomeMes{#1} de #2}%
+}%
+
+\def\subSomenteAno#1{%
+  \def\theDataSub{#1}%
+}%
+
 % Local
 \newcommand{\theLocal}{}%
 \newcommand{\local}[1]{%
@@ -249,7 +246,6 @@
   \renewcommand{\theCursoTitulo}{#1}%
 }%
 \newcommand{\curso}[2]{%
-%   \renewcommand{\theCursoTitulo}{#1}%
   \renewcommand{\theCursoTipo}{#1}%
   \renewcommand{\theCurso}{#2}%
 }%
@@ -291,13 +287,10 @@
 \newcommand{\theOrientador}{}%
 \newcommand{\orientador}[2][M]{%
   \renewcommand{\theOrientador}{#2}%
-  \ifthenelse{\equal{#1}{M}}{%
-    \renewcommand{\theOrientadorArtigo}{o}%
-    \renewcommand{\theOrientadorRotulo}{Orientador}%
-  }{%
+  \ifthenelse{\equal{#1}{F}}{%
     \renewcommand{\theOrientadorArtigo}{a}%
     \renewcommand{\theOrientadorRotulo}{Orientadora}%
-  }%
+  }{}%
 }%
 \newcommand{\theOrientadorInstituicao}{%
   \ifthenelse{\equal{\theInstituicaoSigla}{}}{%
@@ -315,13 +308,10 @@
 \newcommand{\theCoorientador}{}%
 \newcommand{\coorientador}[2][M]{%
   \renewcommand{\theCoorientador}{#2}%
-  \ifthenelse{\equal{#1}{M}}{%
-    \renewcommand{\theCoorientadorArtigo}{o}%
-    \renewcommand{\theCoorientadorRotulo}{Coorientador}%
-  }{%
+  \ifthenelse{\equal{#1}{F}}{%
     \renewcommand{\theCoorientadorArtigo}{a}%
     \renewcommand{\theCoorientadorRotulo}{Coorientadora}%
-  }%
+  }{}%
 }%
 \newcommand{\theCoorientadorInstituicao}{\theOrientadorInstituicao}%
 \newcommand{\instituicaocoorientador}[1]{%
@@ -786,7 +776,6 @@
     }%
     \vfill%
   \end{center}%
-%   \cleardoublepage%
 }%
 
 % -----------------------------------------------

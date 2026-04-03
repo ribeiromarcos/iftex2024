@@ -15,12 +15,15 @@ backend=biber]{biblatex}%
 % URLs
 \RequirePackage{xurl}%
 
+% Correção para \cite ficar em maiúsculo (em novas versões do LaTeX)
+\renewcommand*{\mkbibnamefamily}[1]{\MakeUppercase{#1}}%
+
 % Redefinição do título de referências
 \defbibheading{bibliography}[REFERÊNCIAS]{\vspace*{-12pt}}%
 
 \AtBeginBibliography{%
   \singlespacing%
-  \setlength{\parskip}{10pt}%
+  \setlength{\itemsep}{10pt}%
 }%
 
 % Citações explícitas

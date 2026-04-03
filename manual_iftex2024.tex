@@ -87,7 +87,7 @@ As configurações comuns para todos os tipos de documentos são as seguintes:
 
   \item[] \comando{autor\{A\}} -- substituir \textbf{A} pelo nome do autor;
 
-  \item[] \comando{data\{D\}} -- substituir \textbf{D} pela data no formato \textbf{AAAA-MM-DD};
+  \item[] \comando{data[DD][MM]\{AAAA\}} -- substituir \textbf{DD} por dia, \textbf{MM} por mês e \textbf{AAAA} por ano, por parâmetros DD e MM são opcionais;
 
   \item[] \comando{instituicao[N]\{I\}} -- substituir \textbf{I} pelo nome da instituição, o valor padrão é o nome completo do IFMG, e, opcionalmente, substituir \textbf{S} pela sigla da instituição;
 
@@ -209,7 +209,7 @@ As configurações específicas para documentos do tipo \textbf{artigo} são as 
 \begin{itemize}
   \item[] \comando{email\{E\}} -- substituir \textbf{E} pelo e-mail do autor;
 
-  \item[] \comando{submissao\{D\}} -- substituir \textbf{D} pela data no formato \textbf{AAAA-MM-DD};
+  \item[] \comando{submissao[DD][MM]\{AAAA\}} -- substituir \textbf{DD} por dia, \textbf{MM} por mês e \textbf{AAAA} por ano, por parâmetros DD e MM são opcionais.
 \end{itemize}
 
 Além das configurações específicas, também podem ser usadas as seguintes configurações opcionais:
